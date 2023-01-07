@@ -15,7 +15,7 @@
     "remoteEnv": {
         "THE_SECRET": "${localEnv:THE_SECRET}"
     },
-    "onCreateCommand": "gpg --quiet --batch --yes --decrypt --passphrase=$THE_SECRET --output $HOME/license.lic $HOME/license.lic.gpg",
+    "onCreateCommand": "/home/matlab/setup.sh $THE_SECRET",
     "postCreateCommand": "/bin/run.sh -shell",
     "forwardPorts": [
         8888
