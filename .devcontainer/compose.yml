@@ -9,7 +9,9 @@ services:
       # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
       # - /var/run/docker.sock:/var/run/docker.sock 
     shm_size: 512MB
-    command: -browser
+    # command: -browser
+    # override entrypoint to call bash instead of matlab
+    entrypoint: /bin/bash
     ports:
       - "8888:8888"
     # Weirdly not all MAC addresses are able to be set here. This one works.
