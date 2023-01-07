@@ -1,0 +1,30 @@
+services:
+  matlab:
+    # Using a Dockerfile is optional, but included for completeness.
+    build: .
+    volumes:
+      # This is where VS Code should expect to find your project's source code and the value of "workspaceFolder" in .devcontainer/devcontainer.json
+      - ..:/workspace:cached
+
+      # Uncomment the next line to use Docker from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker-compose for details.
+      # - /var/run/docker.sock:/var/run/docker.sock 
+    shm_size: 512MB
+    command: -browser
+    ports:
+      - "8888:8888"
+    # Weirdly not all MAC addresses are able to be set here. This one works.
+    mac_address: ${THE_SECRET}
+    networks: 
+      network:
+        ipv4_address: 192.168.1.45
+
+networks:
+  network:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.1

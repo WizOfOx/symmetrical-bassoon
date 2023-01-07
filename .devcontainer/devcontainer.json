@@ -1,14 +1,8 @@
 {
-    "name": "Matlab with IPOPT",
-    "image": "worc4021/ipoptmex:latest",
-    "initializeCommand": "docker pull worc4021/ipoptmex:latest",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "name": "matlab",
+    "dockerComposeFile": "compose.yml",
+    "service": "matlab",
     "workspaceFolder": "/workspace",
-    "runArgs": [
-        "--mac-address=${localEnv:MATLAB_MAC}",
-        "--shm-size=512m",
-        "--entrypoint=/bin/bash"
-    ],
     "hostRequirements": {
         "memory": "4gb"
     },
@@ -16,10 +10,6 @@
         "THE_SECRET": "${localEnv:THE_SECRET}"
     },
     "onCreateCommand": "/home/matlab/setup.sh $THE_SECRET",
-    "postCreateCommand": "/bin/run.sh -shell",
-    "forwardPorts": [
-        8888
-    ],
     "customizations": {
         "vscode": {
             "extensions": [
