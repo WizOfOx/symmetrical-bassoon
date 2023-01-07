@@ -10,6 +10,10 @@
         "THE_SECRET": "${localEnv:THE_SECRET}",
         "MATLAB_MAC": "${localEnv:MATLAB_MAC}"
     },
+    "containerEnv": {
+        "THE_SECRET": "${localEnv:THE_SECRET}",
+        "MATLAB_MAC": "${localEnv:MATLAB_MAC}"
+    },
     "onCreateCommand": "/home/matlab/setup.sh $THE_SECRET",
     "customizations": {
         "vscode": {
