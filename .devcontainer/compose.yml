@@ -13,7 +13,7 @@ services:
     ports:
       - "8888:8888"
     # Weirdly not all MAC addresses are able to be set here. This one works.
-    mac_address: ${THE_SECRET}
+    mac_address: ${MATLAB_MAC}
     networks: 
       network:
         ipv4_address: 192.168.1.45
