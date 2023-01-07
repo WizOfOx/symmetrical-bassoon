@@ -1,0 +1,30 @@
+{
+    "name": "Matlab with IPOPT",
+    "image": "worc4021/ipoptmex:latest",
+    "initializeCommand": "docker pull worc4021/ipoptmex:latest",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+    "workspaceFolder": "/workspace",
+    "runArgs": [
+        "--mac-address=${localEnv:MATLAB_MAC}",
+        "--shm-size=512m",
+        "--entrypoint=/bin/bash"
+    ],
+    "hostRequirements": {
+        "memory": "4gb"
+    },
+    "remoteEnv": {
+        "THE_SECRET": "${localEnv:THE_SECRET}"
+    },
+    "onCreateCommand": "gpg --quiet --batch --yes --decrypt --passphrase=$THE_SECRET --output $HOME/license.lic $HOME/license.lic.gpg",
+    "postCreateCommand": "/bin/run.sh -shell",
+    "forwardPorts": [
+        8888
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "bat67.matlab-extension-pack"
+            ]
+        }
+    }
+}
