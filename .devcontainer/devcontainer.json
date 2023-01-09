@@ -10,7 +10,7 @@
         "--entrypoint=/bin/bash"
     ],
     "hostRequirements": {
-        "memory": "4gb"
+        "memory": "8gb"
     },
     "remoteEnv": {
         "THE_SECRET": "${localEnv:THE_SECRET}"
@@ -26,5 +26,8 @@
                 "bat67.matlab-extension-pack"
             ]
         }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
     }
 }
